@@ -1,13 +1,10 @@
-const fsp = require('fs').promises;
-const fs = require('fs');
+const fs = require('fs').promises;
 const request =  require('request');
 const ptp = require("pdf-to-printer");
 
-const { join } = require('path');
+// ptp.getPrinters().then((response) => console.log(response))
 
 var chokidar = require('chokidar');
-//path local onde será salvo as etiquetas
-const directoryPath = join(__dirname, '\etiquetas');
 // Opções da impressora
 const settings = {
   printer: "CC410Label Printer",
@@ -21,7 +18,7 @@ const settings = {
 chokidar.watch('./etiquetas').on('all', async (event, path) => {
   let etiqueta;
   if(event === 'add') {
-    etiqueta = await fsp.readFile(path,'utf-8')
+    etiqueta = await fs.readFile(path,'utf-8')
 
     //Opções da request API zpl labelary
     const options = {
@@ -35,13 +32,14 @@ chokidar.watch('./etiquetas').on('all', async (event, path) => {
       if (err) {
         return console.log(err);
       }
-      await fsp.writeFile('label.pdf', body, (err) => {
+      await fs.writeFile('label.pdf', body, (err) => {
         if (err) {
             console.log(err);
         }
     })
     try {
       await ptp.print("./label.pdf", settings)
+      await fs.unlink(path);
     } catch (err) {
       console.log(err);
     }
