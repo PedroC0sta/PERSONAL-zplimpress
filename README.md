@@ -1,7 +1,7 @@
 # zplimpress
 Aplicação em node.js para ler codigo em zpl passar para pdf e imprimir apenas arrastando arquivo de texto para uma pasta.
 
-### Script utiliza node.js, [chokidar]("https://www.npmjs.com/package/chokidar"), [pdf-to-printer]("https://www.npmjs.com/package/pdf-to-printer"), [fs](https://www.npmjs.com/package/fs)
+### Script utiliza node.js, [chokidar]("https://www.npmjs.com/package/chokidar") , [pdf-to-printer]("https://www.npmjs.com/package/pdf-to-printer") , [fs](https://www.npmjs.com/package/fs)
 
 ### Problema solucionado pela Aplicação 
 Poupar tempo na impressão de múltiplas etiquetas, e se vinculado ao one drive poder colocar essas etiquetas para impressão de qualquer lugar com internet.
