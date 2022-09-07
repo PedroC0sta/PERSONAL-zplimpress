@@ -1,0 +1,36 @@
+{
+  "name": "zplimpress",
+  "version": "1.0.0",
+  "description": "sistema de conversão de zpl to pdf e impressão termica",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PedroC0sta/zplimpress.git"
+  },
+  "keywords": [
+    "node",
+    "printer",
+    "thermal-printer",
+    "labelary",
+    "zpl"
+  ],
+  "author": "PedroC0sta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PedroC0sta/zplimpress/issues"
+  },
+  "homepage": "https://github.com/PedroC0sta/zplimpress#readme",
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "fs": "^0.0.1-security",
+    "node-thermal-printer": "^4.1.2",
+    "nodemon": "^2.0.19",
+    "pdf-to-printer": "^5.3.0",
+    "request": "^2.88.2",
+    "serialport": "^10.4.0"
+  }
+}
