@@ -2,9 +2,7 @@ const fs = require('fs').promises;
 const request =  require('request');
 const ptp = require("pdf-to-printer");
 var chokidar = require('chokidar');
-//substitua pelo path do seu diretorio 
 
-const DIRWATCH = your_dir
 
 // ptp.getPrinters().then((response) => console.log(response))
 
@@ -16,7 +14,7 @@ const settings = {
 };
 
 //watch verifica se a pasta com as etiquetas teve algum arquivo adicionado
-chokidar.watch(DIRWATCH, { persistent: true }).on('all', async (event, path) => {
+chokidar.watch('C:/Users/pedro/OneDrive/Etiquetas', { persistent: true }).on('all', async (event, path) => {
   console.log(event, path);
   let etiqueta;
   if(event === 'add') {
@@ -30,7 +28,7 @@ chokidar.watch(DIRWATCH, { persistent: true }).on('all', async (event, path) => 
       //url para varias etiquetas com index omitido
       url: 'http://api.labelary.com/v1/printers/8dpmm/labels/4x6/'
     }
-    request.post(options, async (err, res, body) => {
+    request.post(options, async (err, _res, body) => {
       if (err) {
         return console.log(err);
       }
