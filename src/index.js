@@ -1,10 +1,13 @@
 const fs = require('fs').promises;
 const request =  require('request');
 const ptp = require("pdf-to-printer");
+var chokidar = require('chokidar');
+//substitua pelo path do seu diretorio 
+
+const DIRWATCH = your_dir
 
 // ptp.getPrinters().then((response) => console.log(response))
 
-var chokidar = require('chokidar');
 // Opções da impressora
 const settings = {
   printer: "CC410Label Printer",
@@ -12,10 +15,9 @@ const settings = {
   win32: ['-print-settings "fit"']
 };
 
-
-
 //watch verifica se a pasta com as etiquetas teve algum arquivo adicionado
-chokidar.watch('./etiquetas').on('all', async (event, path) => {
+chokidar.watch(DIRWATCH, { persistent: true }).on('all', async (event, path) => {
+  console.log(event, path);
   let etiqueta;
   if(event === 'add') {
     etiqueta = await fs.readFile(path,'utf-8')
